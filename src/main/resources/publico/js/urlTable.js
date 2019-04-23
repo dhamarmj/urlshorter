@@ -1,4 +1,5 @@
 $("#form").submit(function () {
+    console.log("SUBMITTED")
 
     $.ajax({
         type: "POST",
@@ -7,6 +8,10 @@ $("#form").submit(function () {
         data: JSON.stringify(data),
         dataType: 'json'
     })
+    console.log("AJAX DONE")
+    loadSavedTable()
+    console.log("TABLE LOADED")
+
     // var db = new Dexie("form");
     // db.version(1).stores({
     //     form: '++id,url,redirect'
@@ -19,6 +24,9 @@ $("#form").submit(function () {
     // loadTabla()
     return false;
 });
+$(document).ready(function () {
+    console.log("DOCUEMNT READY")
+})
 
 function URlSaved() {
     $.ajax({

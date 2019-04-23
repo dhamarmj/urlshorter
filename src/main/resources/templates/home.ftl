@@ -60,8 +60,8 @@
         </table>
     </div>
 </div>
-<script src="../js/jQuery.js"/>
-<script src="../js/table.js"/>
-<script src="../js/urlTable.js"/>
+<script src="../js/jQuery.js"></script>
+<script src="../js/table.js"></script>
+<script src="../js/urlTable.js"></script>
 </body>
 </html>
