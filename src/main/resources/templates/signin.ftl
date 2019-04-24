@@ -39,6 +39,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div style="width: 100%;" class="mb-2">
+                        <input type="checkbox" name="remember" value="true"> Remember Me!<br>
+                    </div>
+                </div>
                 <hr>
                 <button class="btn btn-primary btn-md btn-block" type="submit" id="sendButton">Send!</button>
             </form>

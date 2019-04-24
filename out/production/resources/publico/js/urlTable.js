@@ -1,6 +1,21 @@
 $("#form").submit(function () {
+    var data = document.getElementById("url").value;
 
-    URlSaved();
+    var salida = {url: data};
+    console.log("VALUEEEEE");
+    $.ajax({
+        type: "POST",
+        url: '/generateUrl',
+        contentType: 'application/json',
+        data: JSON.stringify(salida),
+        dataType: 'json'
+    }).onsuccess(function () {
+        console.log("SUCCESSSS");
+        loadSavedTable()
+    }).onerror(function () {
+
+        console.log(salida)
+    });
     // var db = new Dexie("form");
     // db.version(1).stores({
     //     form: '++id,url,redirect'
@@ -13,6 +28,10 @@ $("#form").submit(function () {
     // loadTabla()
     return false;
 });
+$(document).ready(function () {
+    loadSavedTable()
+
+})
 
 function URlSaved() {
     $.ajax({
@@ -27,20 +46,26 @@ function URlSaved() {
 function loadSavedTable() {
     $.ajax({
         url: '/rest/urlUser',
-        async: false,
         success: function (response) {
             var tabla = $('#short_urls').DataTable({
                 destroy: true,
                 data: response,
                 columns: [
+                    {targets: 0, data: 'id', visible: false},
                     {
-                        data: 'id',
-                        visible: false
+                        targets: 1,
+                        data: 'url',
+                        "render": function (data, type, row, meta) {
+                            return '<a href="'+data+'"> '+data+'</a>'
+                        },
                     },
-                    {data: 'url'},
-                    {data: 'redirect'},
+                    {targets: 2,data: 'redirect',
+                        "render": function (data, type, row, meta) {
+                            return '<a href="'+data+'"> '+data+'</a>'
+                        }
+                    },
                     {
-                        targets: 2,
+                        targets: 3,
                         data: 'id',
                         "render": function (data, type, row, meta) {
                             return '<button class="btn btn-info btn-sm" id=editar_' + data + ' onclick="openEdit(this.id)"> Stats!</button>'

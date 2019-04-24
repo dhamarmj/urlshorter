@@ -43,14 +43,17 @@
     <div class="justify-content-center">
         <br>
         <div class="py-3 text-center">
-            <h2>Unsaved Forms</h2>
+            <h2>Enlaces</h2>
         </div>
         <table id="short_urls" class="display" style="width:100%">
             <thead>
             <tr>
+                <th style="display:none;">Id</th>
                 <th>URL</th>
                 <th>Redirect</th>
-                <th>See stats</th>
+                <#if userSigned == true>
+                    <th>See stats</th>
+                </#if>
             </tr>
             </thead>
             <tbody>
@@ -60,8 +63,8 @@
         </table>
     </div>
 </div>
-<script src="../js/jQuery.js"/>
-<script src="../js/table.js"/>
-<script src="../js/urlTable.js"/>
+<script src="../js/jQuery.js"></script>
+<script src="../js/table.js"></script>
+<script src="../js/urlTable.js"></script>
 </body>
 </html>

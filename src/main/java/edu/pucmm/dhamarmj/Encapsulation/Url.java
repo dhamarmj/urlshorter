@@ -30,14 +30,16 @@ public class Url implements Serializable {
         this.browser = browser;
         this.so = so;
         this.ip = ip;
+        this.user = null;
     }
 
-    public Url(String url, String ip, String redirect) {
+    public Url(String url, String ip, String redirect, User user) {
         this.url = url;
         this.redirect = redirect;
         this.browser = "";
         this.so = "";
         this.ip = ip;
+        this.user = user;
     }
 
     public User getUser() {
