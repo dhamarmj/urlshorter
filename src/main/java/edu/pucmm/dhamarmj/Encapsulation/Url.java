@@ -12,14 +12,13 @@ public class Url implements Serializable {
     private long id;
     private String url;
     private String redirect;
-    @Column(nullable = true)
-    private String browser;
-    private String so;
     private String ip;
 
     @ManyToOne
     private User user;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "url")
+    private Set<Visit> visits;
 
     public Url() {
     }
@@ -27,8 +26,6 @@ public class Url implements Serializable {
     public Url(String url, String redirect,  String browser, String so, String ip) {
         this.url = url;
         this.redirect = redirect;
-        this.browser = browser;
-        this.so = so;
         this.ip = ip;
         this.user = null;
     }
@@ -36,10 +33,16 @@ public class Url implements Serializable {
     public Url(String url, String ip, String redirect, User user) {
         this.url = url;
         this.redirect = redirect;
-        this.browser = "";
-        this.so = "";
         this.ip = ip;
         this.user = user;
+    }
+
+    public Set<Visit> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(Set<Visit> visits) {
+        this.visits = visits;
     }
 
     public User getUser() {
@@ -72,22 +75,6 @@ public class Url implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public String getBrowser() {
-        return browser;
-    }
-
-    public void setBrowser(String browser) {
-        this.browser = browser;
-    }
-
-    public String getSo() {
-        return so;
-    }
-
-    public void setSo(String so) {
-        this.so = so;
     }
 
     public String getIp() {

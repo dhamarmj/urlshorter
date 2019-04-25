@@ -27,7 +27,7 @@
                 </li>
                 <#if usuario == "admin">
                     <li class="nav-item">
-                        <a class="nav-link" href="/Admin/Compose/">All URL's</a>
+                        <a class="nav-link" href="/AllUrls/"/">All URL's</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Register/">Register User</a>

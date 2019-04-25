@@ -17,29 +17,8 @@
 </#if>
 <br>
 <br>
-<br>
-<br>
 <!-- Main Content -->
 <div class="container">
-    <div>
-        <#--<form class="needs-validation" id="form" name="form" method="post" action="/generateUrl">-->
-        <form class="needs-validation" id="form">
-            <div class="row text-center">
-                <div class="col-10">
-                    <div name="redirect" id="redirect"></div>
-                    <input type="text" class="form-control" placeholder="Paste a link to shorten it" id="url"
-                           name="url"
-                           width="col-md-auto" required>
-                    <div class="invalid-feedback">
-                        Valid URL is required.
-                    </div>
-                </div>
-                <div class="col-2">
-                    <button class="btn btn-warning" type="submit" id="sendButton">Shorten!</button>
-                </div>
-            </div>
-        </form>
-    </div>
     <div class="justify-content-center">
         <br>
         <div class="py-3 text-center">
@@ -51,9 +30,7 @@
                 <th style="display:none;">Id</th>
                 <th>URL</th>
                 <th>Redirect</th>
-                <#if usuario == "admin">
-                    <th>See stats</th>
-                </#if>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -65,6 +42,6 @@
 </div>
 <script src="../js/jQuery.js"></script>
 <script src="../js/table.js"></script>
-<script src="../js/urlTable.js"></script>
+<script src="../js/urlList.js"></script>
 </body>
 </html>

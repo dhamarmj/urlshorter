@@ -94,7 +94,7 @@ public class DatabaseServices<T> {
      *
      * @param entidadId
      */
-    public void eliminar(Object  entidadId){
+    public void eliminar(Object entidadId){
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
         try {

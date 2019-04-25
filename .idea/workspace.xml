@@ -104,16 +104,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="true" current-in-tab="true">
+      <file pinned="true" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/mainHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="70" column="50" selection-start-line="70" selection-start-column="50" selection-end-line="70" selection-end-column="50" />
+            <state relative-caret-position="224">
+              <caret line="154" column="46" selection-start-line="154" selection-start-column="46" selection-end-line="154" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#StartUser#0;class#mainHandler#0" />
                 <element signature="method#CreateSession#0;class#mainHandler#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="das://6c8b8a41-ad3d-4776-9928-abda87457b49/database/FINAL/schema/PUBLIC/table/URL">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
@@ -395,7 +404,7 @@
     <property name="DatabaseDriversLRU" value="h2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556154052333" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556154207906" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../MicroFrameworkJava/SparkBarCamp2014/build.gradle" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -457,7 +466,7 @@
       <workItem from="1554983825811" duration="11069000" />
       <workItem from="1556030381397" duration="7829000" />
       <workItem from="1556045631302" duration="8483000" />
-      <workItem from="1556072177539" duration="34881000" />
+      <workItem from="1556072177539" duration="35120000" />
     </task>
     <task id="LOCAL-00001" summary="Saving url method">
       <created>1556047647390</created>
@@ -473,15 +482,21 @@
       <option name="project" value="LOCAL" />
       <updated>1556116475132</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="url list, erase url, templates para graphs, usuario sin loggear">
+      <created>1556154137657</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1556154137657</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81077000" />
+    <option name="totallyTimeSpent" value="81316000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1292" height="692" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49752474" visible="true" weight="0.09627832" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -493,7 +508,7 @@
       <window_info anchor="bottom" id="Messages" order="1" weight="0.6932624" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.32978722" />
-      <window_info anchor="bottom" id="Run" order="4" visible="true" weight="0.05319149" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.34219858" />
       <window_info anchor="bottom" id="Favorites" order="5" sideWeight="0.50247526" weight="0.20921986" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.10460993" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
@@ -504,7 +519,7 @@
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="15" weight="0.10106383" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="15" visible="true" weight="0.17553191" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -515,7 +530,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Coverage" order="9" side_tool="true" />
-      <window_info active="true" anchor="right" id="Database" order="10" visible="true" weight="0.21682848" />
+      <window_info anchor="right" id="Database" order="10" visible="true" weight="0.21682848" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49752474" visible="true" weight="0.2524272" />
@@ -605,7 +620,8 @@
     <MESSAGE value="Saving url method" />
     <MESSAGE value="Generating URL, loading table" />
     <MESSAGE value="static files" />
-    <option name="LAST_COMMIT_MESSAGE" value="static files" />
+    <MESSAGE value="url list, erase url, templates para graphs, usuario sin loggear" />
+    <option name="LAST_COMMIT_MESSAGE" value="url list, erase url, templates para graphs, usuario sin loggear" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/resources/publico/js/jQuery.js">
@@ -845,13 +861,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://6c8b8a41-ad3d-4776-9928-abda87457b49/database/FINAL/schema/PUBLIC/table/URL">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://6c8b8a41-ad3d-4776-9928-abda87457b49/database/FINAL/schema/PUBLIC/table/USER">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -868,13 +877,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/mainHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="70" column="50" selection-start-line="70" selection-start-column="50" selection-end-line="70" selection-end-column="50" />
+        <state relative-caret-position="224">
+          <caret line="154" column="46" selection-start-line="154" selection-start-column="46" selection-end-line="154" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#StartUser#0;class#mainHandler#0" />
             <element signature="method#CreateSession#0;class#mainHandler#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://6c8b8a41-ad3d-4776-9928-abda87457b49/database/FINAL/schema/PUBLIC/table/URL">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>

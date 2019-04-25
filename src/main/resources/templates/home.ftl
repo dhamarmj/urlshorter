@@ -51,7 +51,7 @@
                 <th style="display:none;">Id</th>
                 <th>URL</th>
                 <th>Redirect</th>
-                <#if userSigned == true>
+                <#if usuario == "admin">
                     <th>See stats</th>
                 </#if>
             </tr>

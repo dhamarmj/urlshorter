@@ -33,4 +33,17 @@ public class UserServices  extends DatabaseServices<User> {
 
     }
 
+    public User getUser(String username) {
+        EntityManager em = getEntityManager();
+        Query query = em.createQuery("select e from User e where e.username like :username", User.class);
+        query.setParameter("username", username);
+        List<User> list = query.getResultList();
+        if (list.size() >0)
+            return list.get(0);
+        else
+            return null;
+
+    }
+
+
 }

@@ -43,5 +43,11 @@ public class UrlServices  extends DatabaseServices<Url>  {
         else
             return null;
     }
+//    public void EliminarbyCode(String id) {
+//        EntityManager em = getEntityManager();
+//        Query query = em.createQuery("delete from Url where id = :id", Url.class);
+//        query.setParameter("id", id);
+//        query.executeUpdate();
+//    }
 
 }

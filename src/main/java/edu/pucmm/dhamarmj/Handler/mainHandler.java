@@ -1,13 +1,14 @@
 package edu.pucmm.dhamarmj.Handler;
 
 import com.google.gson.Gson;
-import com.sun.org.apache.xpath.internal.SourceTree;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import com.sun.xml.internal.ws.api.message.Header;
 import edu.pucmm.dhamarmj.Encapsulation.Url;
 import edu.pucmm.dhamarmj.Encapsulation.User;
+import edu.pucmm.dhamarmj.Encapsulation.Visit;
 import edu.pucmm.dhamarmj.Services.Encryption;
 import edu.pucmm.dhamarmj.Services.UrlServices;
 import edu.pucmm.dhamarmj.Services.UserServices;
+import edu.pucmm.dhamarmj.Services.VisitServices;
 import edu.pucmm.dhamarmj.Transformation.JsonTransformer;
 import freemarker.template.Configuration;
 import spark.ModelAndView;
@@ -15,14 +16,10 @@ import spark.Request;
 import spark.Session;
 import spark.template.freemarker.FreeMarkerEngine;
 
-import javax.jws.soap.SOAPBinding;
 import java.net.InetAddress;
 import java.net.URL;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static spark.Spark.*;
 
@@ -32,16 +29,32 @@ public class mainHandler {
 
     User currentUser = new User();
     Gson gson = new Gson();
-    String ip_val, hex_val, new_url, base_url = "dhamarmj/";
+    String ip_val, hex_val, new_url, base_url = "http://localhost:4567/dmj/";
     Url url_value;
+    User aux;
+    String so, browser, auxS;
 
     public void startup() {
         staticFiles.location("/publico");
 
-
         Configuration configuration = new Configuration(Configuration.VERSION_2_3_23);
         configuration.setClassForTemplateLoading(mainHandler.class, "/templates");
         FreeMarkerEngine freeMarkerEngine = new FreeMarkerEngine(configuration);
+
+        before("/dmj/*", (request, response) -> {
+            String redirect = base_url + request.uri().split("/")[2];
+            Url ret_val = UrlServices.getInstancia().getUrl(redirect);
+            if (ret_val == null)
+                response.redirect("/");
+            else {
+                so = getSo(request.userAgent().toLowerCase());
+                browser = getBrowser(request.userAgent().toLowerCase());
+                auxS = request.ip();
+                Visit v = new Visit(browser, so, new Date(), auxS, ret_val);
+                VisitServices.getInstancia().insert(v);
+                response.redirect(ret_val.getUrl());
+            }
+        });
 
         get("/", (request, response) -> {
             StartUser();
@@ -51,8 +64,11 @@ public class mainHandler {
                 String usern = Encryption.Decrypt(user);
                 currentUser = UserServices.getInstancia().getUser(usern, passw);
                 CreateSession(request, currentUser);
-            }
+            } else
+                CreateSession(request, null);
+
             currentUser = getSessionUsuario(request);
+            System.out.println(currentUser.getId());
             Map<String, Object> attributes = validateUser();
             return new ModelAndView(attributes, "home.ftl");
         }, freeMarkerEngine);
@@ -94,51 +110,25 @@ public class mainHandler {
             return null;
         }, freeMarkerEngine);
 
-        get("/rest/urlUser", (request, response) -> {
-
-            currentUser = getSessionUsuario(request);
-            if(currentUser != null){
-                Set<Url> vals =  UserServices.getInstancia().buscar(currentUser.getId()).getUrls();
-                response.header("Content-Type", "application/json");
-                for (Url aux:
-                        vals) {
-                    aux.setUser(null);
-                }
-                return vals;
-            }
-            response.status(404);
-            return null;
-        }, JsonTransformer.json());
-
         post("/generateUrl", (request, response) -> {
             currentUser = getSessionUsuario(request);
+            System.out.println(currentUser.getId());
             Url fu = gson.fromJson(request.body(), Url.class);
             Url returned_val = generateURL(fu.getUrl());
             UrlServices.getInstancia().insert(returned_val);
             return null;
         }, JsonTransformer.json());
 
-//        before("dhamarmj/*", (request, response) -> {
-//            System.out.println("IIIINNNNNN");
-//            System.out.println(request.uri());
-//            //User usuario = request.session().attribute("usuario");
-////            if (usuario == null) {
-////                response.redirect("/");
-////            } else {
-////                if (!usuario.isAdmin() && !usuario.isAuthor()) {
-////                    response.redirect("/");
-////                }
-////            }
-//        });
+        get("/AllUrls/", (request, response) -> {
+            Map<String, Object> attributes = validateUser();
+            return new ModelAndView(attributes, "urlList.ftl");
+        }, freeMarkerEngine);
 
-        before((request, response) -> {
-            System.out.println("IIIINNNNNN");
-            System.out.println(request.uri());
-           // ... check if authenticated
-//            if (!authenticated) {
-//                halt(401, "You are not welcome here");
-//            }
-        });
+        get("/StatsUrl/:id", (request, response) -> {
+            Map<String, Object> attributes = validateUser();
+            return new ModelAndView(attributes, "statPage.ftl");
+        }, freeMarkerEngine);
+
 
         get("/LogOut/", (request, response) -> {
             request.session().removeAttribute("usuario");
@@ -150,7 +140,54 @@ public class mainHandler {
             return null;
         }, freeMarkerEngine);
 
+//        REST REQUESTS
+        get("/rest/urlUser", (request, response) -> {
+            currentUser = getSessionUsuario(request);
+            if (currentUser != null) {
+                Set<Url> vals = UserServices.getInstancia().buscar(currentUser.getId()).getUrls();
+                //System.out.println("rest: " + vals.size());
+                response.header("Content-Type", "application/json");
+                for (Url aux :
+                        vals) {
+                    //System.out.println(aux.getUrl());
+                    aux.setUser(null);
+                }
+                System.out.println("URLS: " + vals.size());
+                return vals;
+            }
+            response.status(404);
+            return null;
+        }, JsonTransformer.json());
 
+        get("/rest/urls", (request, response) -> {
+            List<Url> vals = UrlServices.getInstancia().buscarTodos();
+            response.header("Content-Type", "application/json");
+            for (Url aux :
+                    vals) {
+                aux.setUser(null);
+            }
+            if (vals.size() == 0)
+                response.status(404);
+
+            return vals;
+        }, JsonTransformer.json());
+
+        get("/rest/url/:id", (request, response) -> {
+            UrlServices.getInstancia().eliminar(Long.parseLong(request.params("id")));
+            response.redirect("/AllUrls/");
+            return null;
+        });
+        get("/rest/browserUrl/:id", (request, response) -> {
+          //  Url url = UrlServices.getInstancia().buscar();
+            List<Visit> visits = VisitServices.getInstancia().getVisitbyBrowser(Long.parseLong(request.params("id")));
+            response.header("Content-Type", "application/json");
+            System.out.println(visits.size());
+            for (Visit item:
+                 visits) {
+                item.setUrl(null);
+            }
+            return visits;
+        }, JsonTransformer.json());
     }
 
     private Url generateURL(String a) throws Exception {
@@ -159,9 +196,10 @@ public class mainHandler {
         InetAddress ip = InetAddress.getByName(direction.getHost());
         ip_val = ip.getHostAddress();
         ip_val = ip_val.replace(".", "");
-        ip_val =  (Long.parseLong(ip_val) +  LocalDateTime.now().getMinute() + LocalDateTime.now().getSecond()) + "";
+        ip_val = (Long.parseLong(ip_val) + LocalDateTime.now().getMinute() + LocalDateTime.now().getSecond()) + "";
         hex_val = longToHex(ip_val);
-        new_url = "http://" + base_url + hex_val;
+        new_url = base_url + hex_val;
+        //System.out.println(currentUser.getId());
         return new Url(a, ip.getHostAddress(), new_url, currentUser);
     }
 
@@ -169,14 +207,11 @@ public class mainHandler {
         return Long.toHexString(Long.parseLong(value));
     }
 
-    private long HextoLong(String value) {
-        return Long.parseLong(value, 16);
-    }
-
     private Map<String, Object> validateUser() {
         Map<String, Object> attributes = new HashMap<>();
-        if (currentUser == null) {
+        if (currentUser.getPassword() == null) {
             attributes.put("usuario", "other");
+            attributes.put("userSigned", false);
             attributes.put("userSigned", false);
             return attributes;
         }
@@ -222,11 +257,58 @@ public class mainHandler {
 
     private void CreateSession(Request request, User user) {
         Session session = request.session(true);
+        if (user == null) {
+            aux = UserServices.getInstancia().getUser(session.id());
+            if (aux == null) {
+                user = new User(session.id(), false);
+                UserServices.getInstancia().insert(user);
+            } else
+                user = aux;
+        }
         session.attribute("usuario", user);
     }
 
     private User getSessionUsuario(Request request) {
-        return request.session().attribute("usuario");
+        User user = request.session().attribute("usuario");
+        //System.out.println(user.getUsername() + " " + user.getId());
+        return user;
+    }
+
+    private String getSo(String userAgent) {
+        String so;
+        if (userAgent.contains("android")) {
+            so = "Android";
+        } else if (userAgent.contains("iphone")) {
+            so = "iPhone";
+        } else if (userAgent.contains("windows")) {
+            so = "Windows";
+        } else if (userAgent.contains("macintosh")) {
+            so = "Macintosh";
+        } else if (userAgent.contains("linux")) {
+            so = "Linux";
+        } else {
+            so = "UnKnown";
+        }
+
+        return so;
+    }
+
+    private String getBrowser(String userAgent) {
+        String browser;
+        if (userAgent.contains("ie") || userAgent.contains("rv")) {
+            browser = "IE";
+        } else if (userAgent.contains("opr") || userAgent.contains("opera")) {
+            browser = "Opera";
+        } else if (userAgent.contains("safari")) {
+            browser = "Safari";
+        } else if (userAgent.contains("chrome")) {
+            browser = "Chrome";
+        } else if (userAgent.contains("firefox")) {
+            browser = "Firefox";
+        } else {
+            browser = "Other";
+        }
+        return browser;
     }
 
 }

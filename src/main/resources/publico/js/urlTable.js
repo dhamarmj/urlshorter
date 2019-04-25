@@ -47,6 +47,7 @@ function loadSavedTable() {
     $.ajax({
         url: '/rest/urlUser',
         success: function (response) {
+            console.log(response);
             var tabla = $('#short_urls').DataTable({
                 destroy: true,
                 data: response,
@@ -68,7 +69,7 @@ function loadSavedTable() {
                         targets: 3,
                         data: 'id',
                         "render": function (data, type, row, meta) {
-                            return '<button class="btn btn-info btn-sm" id=editar_' + data + ' onclick="openEdit(this.id)"> Stats!</button>'
+                            return '<button class="btn btn-info btn-sm" id=val_' + data + ' onclick="openStat(this.id)"> Stats!</button>'
                         },
                     }
                 ],
@@ -144,3 +145,7 @@ function reloadTabla(nuevo) {
     tabla.columns.adjust().draw();
 }
 
+function openStat(id){
+    var num = id.replace('val_', '');
+    window.location.href = '/StatsUrl/' + num;
+}
