@@ -1,7 +1,6 @@
 package edu.pucmm.dhamarmj.Handler;
 
 import com.google.gson.Gson;
-import com.sun.xml.internal.ws.api.message.Header;
 import edu.pucmm.dhamarmj.Encapsulation.Url;
 import edu.pucmm.dhamarmj.Encapsulation.User;
 import edu.pucmm.dhamarmj.Encapsulation.Visit;
@@ -58,17 +57,18 @@ public class mainHandler {
 
         get("/", (request, response) -> {
             StartUser();
+            //VisitServices.getInstancia().getVisitbyBrowser(33);
             String user = request.cookie("LoginU");
             if (user != null) {
                 String passw = Encryption.Decrypt(request.cookie("LoginP"));
                 String usern = Encryption.Decrypt(user);
                 currentUser = UserServices.getInstancia().getUser(usern, passw);
                 CreateSession(request, currentUser);
-            } else
-                CreateSession(request, null);
-
+            }
             currentUser = getSessionUsuario(request);
-            System.out.println(currentUser.getId());
+            if (currentUser == null)
+                currentUser = CreateSession(request, null);
+
             Map<String, Object> attributes = validateUser();
             return new ModelAndView(attributes, "home.ftl");
         }, freeMarkerEngine);
@@ -112,7 +112,6 @@ public class mainHandler {
 
         post("/generateUrl", (request, response) -> {
             currentUser = getSessionUsuario(request);
-            System.out.println(currentUser.getId());
             Url fu = gson.fromJson(request.body(), Url.class);
             Url returned_val = generateURL(fu.getUrl());
             UrlServices.getInstancia().insert(returned_val);
@@ -126,6 +125,8 @@ public class mainHandler {
 
         get("/StatsUrl/:id", (request, response) -> {
             Map<String, Object> attributes = validateUser();
+            Url url = UrlServices.getInstancia().buscar(Long.parseLong(request.params("id")));
+            attributes.put("clickNum", url.getVisits().size());
             return new ModelAndView(attributes, "statPage.ftl");
         }, freeMarkerEngine);
 
@@ -145,17 +146,16 @@ public class mainHandler {
             currentUser = getSessionUsuario(request);
             if (currentUser != null) {
                 Set<Url> vals = UserServices.getInstancia().buscar(currentUser.getId()).getUrls();
-                //System.out.println("rest: " + vals.size());
                 response.header("Content-Type", "application/json");
                 for (Url aux :
                         vals) {
-                    //System.out.println(aux.getUrl());
                     aux.setUser(null);
+                    aux.setVisits(null);
                 }
-                System.out.println("URLS: " + vals.size());
                 return vals;
             }
             response.status(404);
+            System.out.println("ERROR");
             return null;
         }, JsonTransformer.json());
 
@@ -178,12 +178,11 @@ public class mainHandler {
             return null;
         });
         get("/rest/browserUrl/:id", (request, response) -> {
-          //  Url url = UrlServices.getInstancia().buscar();
-            List<Visit> visits = VisitServices.getInstancia().getVisitbyBrowser(Long.parseLong(request.params("id")));
+            List<Visit> visits = VisitServices.getInstancia().getVisitbyUrl(Long.parseLong(request.params("id")));
             response.header("Content-Type", "application/json");
             System.out.println(visits.size());
-            for (Visit item:
-                 visits) {
+            for (Visit item :
+                    visits) {
                 item.setUrl(null);
             }
             return visits;
@@ -255,7 +254,7 @@ public class mainHandler {
         }
     }
 
-    private void CreateSession(Request request, User user) {
+    private User CreateSession(Request request, User user) {
         Session session = request.session(true);
         if (user == null) {
             aux = UserServices.getInstancia().getUser(session.id());
@@ -266,6 +265,7 @@ public class mainHandler {
                 user = aux;
         }
         session.attribute("usuario", user);
+        return user;
     }
 
     private User getSessionUsuario(Request request) {
@@ -310,5 +310,12 @@ public class mainHandler {
         }
         return browser;
     }
+
+//    private void groupbyBrowser(Set<Visit> visits){
+//        for (Visit visit:
+//             visits) {
+//
+//        }
+//    }
 
 }

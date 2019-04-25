@@ -18,7 +18,7 @@ public class Visit implements Serializable {
     private String fechaS;
     private String ip;
     @Transient
-    private SimpleDateFormat dt = new SimpleDateFormat("yyyyy-mm-dd");
+    private SimpleDateFormat dt;
     @ManyToOne
     private Url url;
 
@@ -26,6 +26,7 @@ public class Visit implements Serializable {
     }
 
     public Visit(String browser, String so, Date fecha, String ip, Url url) {
+        dt = new SimpleDateFormat("yyyy-MM-dd");
         this.browser = browser;
         this.so = so;
         this.fecha = fecha;

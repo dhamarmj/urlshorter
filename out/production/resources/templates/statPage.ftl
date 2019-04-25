@@ -24,9 +24,16 @@
             <h2>Stats</h2>
         </div>
     </div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Visits  </h5>
+    <div class="card-group">
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">${clickNum} Visits</h5>
+            </div>
+        </div>
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">${clickNum} Visits</h5>
+            </div>
         </div>
     </div>
     <div align="left" id="piechart" style="width: 500px; height: 500px;"></div>
@@ -37,4 +44,4 @@
 <script src="../js/googleCharts.js"></script>
 <script src="../js/chartPage.js"></script>
 </body>
-</html>
+</html
