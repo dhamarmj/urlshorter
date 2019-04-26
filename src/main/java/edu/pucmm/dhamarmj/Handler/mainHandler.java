@@ -165,6 +165,7 @@ public class mainHandler {
             for (Url aux :
                     vals) {
                 aux.setUser(null);
+                aux.setVisits(null);
             }
             if (vals.size() == 0)
                 response.status(404);

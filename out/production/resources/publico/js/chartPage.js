@@ -1,11 +1,6 @@
 google.charts.load('current', {packages: ['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
-// $(document).ready(function () {
-//     drawChart()
-//
-// })
-
 function drawChart() {
     // Define the chart to be drawn.
     var data = new google.visualization.DataTable();

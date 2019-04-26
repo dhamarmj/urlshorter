@@ -29,7 +29,7 @@ function loadSavedTable() {
                         targets: 3,
                         data: 'id',
                         "render": function (data, type, row, meta) {
-                            return '<button class="btn btn-info btn-sm" id=val_' + data + ' onclick="openEdit(this.id)"> Stats! </button>' + '<button class="btn btn-danger btn-sm" id=val_' + data + ' onclick="deleteForm(this.id)">Eliminar</button>'
+                            return '<button class="btn btn-info btn-sm" id=val_' + data + ' onclick="openStat(this.id)"> Stats! </button>' + '<button class="btn btn-danger btn-sm" id=val_' + data + ' onclick="deleteForm(this.id)">Eliminar</button>'
                         },
                     }
                 ],
@@ -57,4 +57,8 @@ function deleteForm(id) {
     window.location.href = '/rest/url/' + num;
 }
 
+function openStat(id){
+    var num = id.replace('val_', '');
+    window.location.href = '/StatsUrl/' + num;
+}
 
