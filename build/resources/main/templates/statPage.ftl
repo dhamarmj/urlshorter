@@ -42,6 +42,6 @@
 <script src="../js/jQuery.js"></script>
 <script src="../js/table.js"></script>
 <script src="../js/googleCharts.js"></script>
-<#--<script src="../js/chartPage.js"></script>-->
+<script src="../js/chartPage.js"></script>
 </body>
 </html

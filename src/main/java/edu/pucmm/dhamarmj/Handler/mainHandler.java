@@ -32,6 +32,7 @@ public class mainHandler {
     Url url_value;
     User aux;
     String so, browser, auxS;
+    int auxi;
 
     public void startup() {
         staticFiles.location("/publico");
@@ -181,13 +182,21 @@ public class mainHandler {
         get("/rest/browserUrl/:id", (request, response) -> {
             List<Visit> visits = VisitServices.getInstancia().getVisitbyUrl(Long.parseLong(request.params("id")));
             response.header("Content-Type", "application/json");
-            System.out.println(visits.size());
-            for (Visit item :
-                    visits) {
-                item.setUrl(null);
-            }
-            return visits;
+            return groupbyBrowser(visits);
         }, JsonTransformer.json());
+        get("/rest/osUrl/:id", (request, response) -> {
+            List<Visit> visits = VisitServices.getInstancia().getVisitbyUrl(Long.parseLong(request.params("id")));
+            response.header("Content-Type", "application/json");
+            return groupbySo(visits);
+        }, JsonTransformer.json());
+        get("/rest/dateUrl/:id", (request, response) -> {
+            List<Visit> visits = VisitServices.getInstancia().getVisitbyUrl(Long.parseLong(request.params("id")));
+            response.header("Content-Type", "application/json");
+            return groupbyDate(visits);
+        }, JsonTransformer.json());
+
+       // HttpResponse<String> response = Unirest.get('https://api.microlink.io?url=https%3A%2F%2Ftwitter.com%2Ffuturism%2Fstatus%2F882987478541533189');
+
     }
 
     private Url generateURL(String a) throws Exception {
@@ -300,23 +309,61 @@ public class mainHandler {
             browser = "IE";
         } else if (userAgent.contains("opr") || userAgent.contains("opera")) {
             browser = "Opera";
-        } else if (userAgent.contains("safari")) {
-            browser = "Safari";
-        } else if (userAgent.contains("chrome")) {
+        }  else if (userAgent.contains("chrome")) {
             browser = "Chrome";
         } else if (userAgent.contains("firefox")) {
             browser = "Firefox";
+        } else if (userAgent.contains("safari")) {
+            browser = "Safari";
         } else {
             browser = "Other";
         }
         return browser;
     }
 
-//    private void groupbyBrowser(Set<Visit> visits){
-//        for (Visit visit:
-//             visits) {
-//
-//        }
-//    }
+    private HashMap<String, Integer> groupbyBrowser(List<Visit> visits){
+        HashMap<String, Integer> chart_val = new HashMap<String, Integer>();
+        for (Visit visit:
+             visits) {
+            if(chart_val.get(visit.getBrowser()) != null){
+                auxi = chart_val.get(visit.getBrowser());
+                chart_val.remove(visit.getBrowser());
+                chart_val.put(visit.getBrowser(), auxi+1);
+            }
+            else {
+                chart_val.put(visit.getBrowser(), 1);
+            }
+        }
+        return chart_val;
+    }
+
+    private HashMap<String, Integer> groupbySo(List<Visit> visits){
+        HashMap<String, Integer> chart_val = new HashMap<String, Integer>();
+        for (Visit visit:
+                visits) {
+            if(chart_val.get(visit.getSo()) != null){
+                auxi = chart_val.get(visit.getSo());
+                chart_val.remove(visit.getSo());
+                chart_val.put(visit.getSo(), auxi+1);
+            }
+            else
+                chart_val.put(visit.getSo(), 1);
+        }
+        return chart_val;
+    }
+    private HashMap<String, Integer> groupbyDate(List<Visit> visits){
+        HashMap<String, Integer> chart_val = new HashMap<String, Integer>();
+        for (Visit visit:
+                visits) {
+            if(chart_val.get(visit.getFechaS()) != null){
+                auxi = chart_val.get(visit.getFechaS());
+                chart_val.remove(visit.getFechaS());
+                chart_val.put(visit.getFechaS(), auxi+1);
+            }
+            else
+                chart_val.put(visit.getFechaS(), 1);
+        }
+        return chart_val;
+    }
 
 }
