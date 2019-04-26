@@ -1,5 +1,4 @@
 package edu.pucmm.dhamarmj.Encapsulation;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
