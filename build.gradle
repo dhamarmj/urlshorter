@@ -34,8 +34,6 @@ dependencies {
     compile 'com.sparkjava:spark-debug-tools:0.5'
     compile 'com.google.code.gson:gson:2.6.2'
     compile "org.slf4j:slf4j-simple:1.7.21"
-    //system group: 'com.sun', name: 'tools', version: '1.5.0'
-    compile 'com.sun:tools:1.7.0.13'
 }
 
 shadowJar {
