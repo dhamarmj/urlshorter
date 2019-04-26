@@ -1,6 +1,5 @@
 package edu.pucmm.dhamarmj.Encapsulation;
 
-import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
