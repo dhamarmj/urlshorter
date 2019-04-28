@@ -34,7 +34,7 @@ dependencies {
     compile 'com.sparkjava:spark-debug-tools:0.5'
     compile 'com.google.code.gson:gson:2.6.2'
     compile "org.slf4j:slf4j-simple:1.7.21"
-    compile group: 'org.eclipse.jetty', name: 'jetty-http-spi', version: '9.4.4.v20170414'
+    compile 'org.eclipse.jetty:jetty-http-spi:9.4.4.v20170414'
 }
 
 shadowJar {
