@@ -29,7 +29,7 @@ public class mainHandler {
 
     static User currentUser = new User();
     Gson gson = new Gson();
-    static String ip_val, hex_val, new_url, base_url = "http://localhost:4567/dmj/";
+    static String ip_val, hex_val, new_url, base_url = "https://www.hadesprograms.me/dmj/";
     static Url url_value;
     User aux;
     String so, browser, auxS;
@@ -177,8 +177,13 @@ public class mainHandler {
             return vals;
         }, JsonTransformer.json());
 
-        get("/rest/url/:id", (request, response) -> {
-            UrlServices.getInstancia().eliminar(Long.parseLong(request.params("id")));
+        get("/deleteUrl/:id", (request, response) -> {
+            Url url = UrlServices.getInstancia().buscar(Long.parseLong(request.params("id")));
+            for (Visit v:
+                 url.getVisits()) {
+                VisitServices.getInstancia().eliminar(v.getId());
+            }
+            UrlServices.getInstancia().eliminar(url.getId());
             response.redirect("/AllUrls/");
             return null;
         });
@@ -188,16 +193,23 @@ public class mainHandler {
             return groupbyBrowser(visits);
         }, JsonTransformer.json());
 
-//        get("/rest/osUrl/:id", (request, response) -> {
-//            List<Visit> visits = VisitServices.getInstancia().getVisitbyUrl(Long.parseLong(request.params("id")));
-//            response.header("Content-Type", "application/json");
-//            return groupbySo(visits);
-//        }, JsonTransformer.json());
-//        get("/rest/dateUrl/:id", (request, response) -> {
-//            List<Visit> visits = VisitServices.getInstancia().getVisitbyUrl(Long.parseLong(request.params("id")));
-//            response.header("Content-Type", "application/json");
-//            return groupbyDate(visits);
-//        }, JsonTransformer.json());
+        get("/rest/osUrl/:id", (request, response) -> {
+            List<Visit> visits = VisitServices.getInstancia().getVisitbyUrl(Long.parseLong(request.params("id")));
+            response.header("Content-Type", "application/json");
+            return groupbySo(visits);
+        }, JsonTransformer.json());
+
+        get("/rest/dateUrl/:id", (request, response) -> {
+            List<Visit> visits = VisitServices.getInstancia().getVisitbyUrl(Long.parseLong(request.params("id")));
+            response.header("Content-Type", "application/json");
+            return groupbyDate(visits);
+        }, JsonTransformer.json());
+
+        get("/rest/ipUrl/:id", (request, response) -> {
+            List<Visit> visits = VisitServices.getInstancia().getVisitbyUrl(Long.parseLong(request.params("id")));
+            response.header("Content-Type", "application/json");
+            return groupbyIP(visits);
+        }, JsonTransformer.json());
 
         // HttpResponse<String> response = Unirest.get('https://api.microlink.io?url=https%3A%2F%2Ftwitter.com%2Ffuturism%2Fstatus%2F882987478541533189');
 
@@ -367,6 +379,21 @@ public class mainHandler {
                 chart_val.get(auxi).setValue(auxi2 + 1);
             } else {
                 chart_val.add(new Groupby(visit.getFechaS(), 1));
+            }
+        }
+        return chart_val;
+    }
+
+    private List<Groupby> groupbyIP(List<Visit> visits) {
+        List<Groupby> chart_val = new ArrayList<>();
+        for (Visit visit :
+                visits) {
+            auxi = find(chart_val, visit.getIp());
+            if (auxi != -1) {
+                auxi2 = chart_val.get(auxi).getValue();
+                chart_val.get(auxi).setValue(auxi2 + 1);
+            } else {
+                chart_val.add(new Groupby(visit.getIp(), 1));
             }
         }
         return chart_val;

@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 public class soapHandler {
 
     public static void init() throws Exception {
-        Server server = new Server(963);
+        Server server = new Server(7777);
         ContextHandlerCollection contextHandlerCollection = new ContextHandlerCollection();
         server.setHandler(contextHandlerCollection);
         server.start();

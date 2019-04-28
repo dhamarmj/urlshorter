@@ -53,7 +53,7 @@ function loadSavedTable() {
 
 function deleteForm(id) {
     var num = id.replace('val_', '');
-    window.location.href = '/rest/url/' + num;
+    window.location.href = '/deleteUrl/' + num;
 }
 
 function openStat(id){

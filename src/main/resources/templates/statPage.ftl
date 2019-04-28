@@ -48,10 +48,46 @@
                 <div id="show_lnk"></div>
             </div>
         </div>
-
+    </div>
+    <div class="card-group">
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-header">
+                <h5>Visits By Date</h5>
+            </div>
+            <div class="card-body">
+                <div id="piechart2"></div>
+            </div>
+        </div>
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-header">
+                <h5>Visits By Browser</h5>
+            </div>
+            <div class="card-body">
+                <#--<div align="left" id="piechart1" style="width: 500px; height: 500px;"></div>-->
+                <div id="piechart1"></div>
+            </div>
+        </div>
+    </div>
+    <div class="card-group">
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-header">
+                <h5>Visits By OS</h5>
+            </div>
+            <div class="card-body">
+                <div align="left" id="piechart3"></div>
+            </div>
+        </div>
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-header">
+                <h5>Visits By Ip</h5>
+            </div>
+            <div class="card-body">
+                <div align="left" id="piechart4"></div>
+            </div>
+        </div>
     </div>
 </div>
-<div align="left" id="piechart" style="width: 500px; height: 500px;"></div>
+
 
 </div>
 <script src="../js/jQuery.js"></script>
@@ -62,6 +98,7 @@
 <#--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
 <script src="../js/table.js"></script>
 <script src="../js/googleCharts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 <script>
     $(document).ready(function () {
@@ -74,30 +111,158 @@
                 $("#show_lnk").html('<img src="' + response.image + '" width="300" height="200"><h5>' + response.title + '</h5><p>' + response.description + '</p><a href="' + response.url + '">' + response.url + '</a>');
             }
         });
+
+        drawChartBrowser();
+        drawChartDate();
+        drawChartOS();
+        drawChartip()
     });
 
-    google.charts.load('current', {packages: ['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart() {
+    function drawChartBrowser() {
         $.ajax({
             url: '/rest/browserUrl/${urlId}',
             success: function (response) {
-                var data = new google.visualization.DataTable();
-                data.addColumn('string', 'name');
-                data.addColumn('number', 'Value');
-                for (var i = 0; i < response.length; i++) {
-                    console.log(response(i).name + " " + response(i).value)
-                    //  data.addRows([response(i).name,response(i).value])
-                }
-                ;
-                console.log(data)
+                var data = [], labels = [];
+                response.forEach(function (val) {
+                    data.push(val.value);
+                    labels.push(val.name);
+                });
+
                 var options = {
-                    title: 'By Browser'
+                    chart: {
+                        type: 'pie',
+                    },
+                    series: data,
+                    labels: labels,
+                    responsive: [{
+                        breakpoint: 480,
+                        options: {
+                            chart: {
+                                width: 150
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }]
                 };
-                // Instantiate and draw the chart.
-                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-                chart.draw(data, options);
+
+                var chart = new ApexCharts(document.querySelector("#piechart1"), options);
+                chart.render();
+            }
+        });
+    }
+
+    function drawChartDate() {
+        $.ajax({
+            url: '/rest/dateUrl/${urlId}',
+            success: function (response) {
+                var data = [], labels = [];
+                response.forEach(function (val) {
+                    data.push(val.value);
+                    labels.push(val.name);
+                });
+
+                var options = {
+                    chart: {
+                        type: 'donut',
+                    },
+                    series: data,
+                    labels: labels,
+                    responsive: [{
+                        breakpoint: 480,
+                        options: {
+                            chart: {
+                                width: 150
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }]
+                };
+
+                var chart = new ApexCharts(document.querySelector("#piechart2"), options);
+                chart.render();
+            }
+        });
+    }
+
+    function drawChartOS() {
+        $.ajax({
+            url: '/rest/osUrl/${urlId}',
+            success: function (response) {
+                var data = [], labels = [];
+                response.forEach(function (val) {
+                    data.push(val.value);
+                    labels.push(val.name);
+                });
+
+                var options = {
+                    chart: {
+                        type: 'pie',
+                    },
+                    series: data,
+                    labels: labels,
+                    fill: {
+                        type: 'gradient',
+                    },
+                    responsive: [{
+                        breakpoint: 480,
+                        options: {
+                            chart: {
+                                width: 150
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }]
+                };
+
+                var chart = new ApexCharts(document.querySelector("#piechart3"), options);
+                chart.render();
+            }
+        });
+    }
+
+    function drawChartip() {
+        $.ajax({
+            url: '/rest/ipUrl/${urlId}',
+            success: function (response) {
+                var data = [], labels = [];
+                response.forEach(function (val) {
+                    data.push(val.value);
+                    labels.push(val.name);
+                });
+
+                var options = {
+                    chart: {
+                        type: 'donut',
+                    },
+                    series: data,
+                    labels: labels,
+                    theme: {
+                        monochrome: {
+                            enabled: true
+                        }
+                    },
+                    responsive: [{
+                        breakpoint: 480,
+                        options: {
+                            chart: {
+                                width: 150
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }]
+                };
+
+                var chart = new ApexCharts(document.querySelector("#piechart4"), options);
+                chart.render();
             }
         });
     }

@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1461d7a0-2e1a-495d-b262-9cd13a6ae71b" name="Default Changelist" comment="url list, erase url, templates para graphs, usuario sin loggear">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Encapsulation/UrlSoap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/UrlWebService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/restHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/soapHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/publico/js/popper.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
@@ -16,47 +12,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/publico/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/publico/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/publico/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/publico/js/bootstrap.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/publico/js/bootstrap.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/publico/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/publico/js/bootstrap.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/publico/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/publico/js/bootstrap.bundle.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/publico/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/publico/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/publico/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/publico/js/bootstrap.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/publico/js/bootstrap.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/publico/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/publico/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/publico/js/bootstrap.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/publico/js/bootstrap.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/publico/js/chartPage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/publico/js/jQuery.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/publico/js/jQuery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/publico/js/urlList.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/publico/js/urlList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/firstNavBar.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/firstNavBar.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/home.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/home.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/navbar.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/navbar.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/register.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/register.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/signin.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/signin.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/statPage.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/statPage.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/urlList.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/urlList.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Encapsulation/Groupby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Encapsulation/Groupby.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/mainHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/mainHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.bundle.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/js/chartPage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/js/jQuery.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/js/jQuery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/firstNavBar.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/firstNavBar.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/navbar.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/navbar.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/register.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/signin.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/signin.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/soapHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/soapHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/publico/js/urlList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/publico/js/urlList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/statPage.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/statPage.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/urlList.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/urlList.ftl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -99,13 +58,6 @@
         <item name="jdbc:h2:tcp://localhost/~/final" type="feb32156:DbDataSourceImpl" />
         <item name="FINAL: database" type="2aa06773:H2ImplModel$Database" />
         <item name="PUBLIC: schema" type="7f85d983:H2ImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="jdbc:h2:tcp://localhost/~/final" type="feb32156:DbDataSourceImpl" />
-        <item name="FINAL: database" type="2aa06773:H2ImplModel$Database" />
-        <item name="PUBLIC: schema" type="7f85d983:H2ImplModel$Schema" />
-        <item name="VISIT: table" type="818c1b4a:H2ImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -150,63 +102,7 @@
     <favorites_list name="urlshorter" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="true" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/mainHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#9165#9166#0" expanded="true" />
-                <element signature="e#9227#9228#0" expanded="true" />
-                <element signature="e#10530#10531#0" expanded="true" />
-                <element signature="e#10572#10573#0" expanded="true" />
-                <element signature="method#StartUser#0;class#mainHandler#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/UrlWebService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="21" column="39" lean-forward="true" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#902#903#0" expanded="true" />
-                <element signature="e#939#940#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/soapHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -266,7 +162,6 @@
         <option value="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Services/VisitServices.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Encapsulation/Url.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Services/Encryption.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/publico/js/urlList.js" />
         <option value="$PROJECT_DIR$/src/main/resources/publico/js/chartPage.js" />
         <option value="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Encapsulation/Groupby.java" />
         <option value="$PROJECT_DIR$/src/main/resources/publico/js/jQuery.js" />
@@ -279,8 +174,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/register.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/signin.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/urlList.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/mainHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/statPage.ftl" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Encapsulation/UserSoap.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Encapsulation/UrlSOAP.java" />
@@ -288,7 +181,10 @@
         <option value="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/UrlWebService.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/restHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/statPage.ftl" />
+        <option value="$PROJECT_DIR$/src/main/resources/publico/js/urlList.js" />
         <option value="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/soapHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/mainHandler.java" />
       </list>
     </option>
   </component>
@@ -437,6 +333,15 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="publico" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="urlshorter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="urlshorter" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -456,9 +361,9 @@
     <property name="DatabaseDriversLRU" value="h2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556420068272" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556480115704" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../finalwebbackend/build.gradle" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blogorm/build.gradle" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -561,7 +466,7 @@
       <workItem from="1556072177539" duration="64142000" />
       <workItem from="1556373422752" duration="11378000" />
       <workItem from="1556417397822" duration="179000" />
-      <workItem from="1556417868240" duration="1269000" />
+      <workItem from="1556417868240" duration="5519000" />
     </task>
     <task id="LOCAL-00001" summary="Saving url method">
       <created>1556047647390</created>
@@ -588,12 +493,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123164000" />
+    <option name="totallyTimeSpent" value="127414000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1292" height="692" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49752474" visible="true" weight="0.27022654" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49752474" visible="true" weight="0.25323623" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -603,7 +508,7 @@
       <window_info anchor="bottom" id="Messages" order="1" weight="0.6932624" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.32978722" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.15425532" />
+      <window_info anchor="bottom" id="Run" order="4" visible="true" weight="0.05319149" />
       <window_info anchor="bottom" id="Favorites" order="5" sideWeight="0.50247526" weight="0.20921986" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.27659574" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
@@ -614,7 +519,7 @@
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="15" visible="true" weight="0.05319149" />
+      <window_info anchor="bottom" id="Version Control" order="15" weight="0.19148937" />
       <window_info anchor="bottom" id="Java Enterprise" order="16" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -626,7 +531,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Coverage" order="9" side_tool="true" />
-      <window_info anchor="right" id="Database" order="10" weight="0.23705502" />
+      <window_info anchor="right" id="Database" order="10" visible="true" weight="0.027508091" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49752474" visible="true" weight="0.11812298" />
@@ -884,13 +789,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/publico/js/urlList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Encapsulation/Groupby.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -899,13 +797,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/publico/js/bootstrap.js.map" />
-    <entry file="das://6c8b8a41-ad3d-4776-9928-abda87457b49/database/FINAL/schema/PUBLIC/table/URL">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/publico/js/popper.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -983,13 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/urlList.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="34" column="20" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Encapsulation/Url.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -1004,13 +888,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="36" column="90" selection-start-line="36" selection-start-column="90" selection-end-line="36" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Services/DatabaseServices.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="116" column="13" selection-start-line="116" selection-start-column="13" selection-end-line="116" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1034,13 +911,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/statPage.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1115">
-          <caret line="89" column="38" selection-start-line="89" selection-start-column="38" selection-end-line="89" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Encapsulation/UrlSoap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1048,10 +918,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Services/DatabaseServices.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://6c8b8a41-ad3d-4776-9928-abda87457b49/database/FINAL/schema/PUBLIC/table/URL">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/mainHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="-740">
+          <caret line="47" column="32" lean-forward="true" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#9165#9166#0" expanded="true" />
@@ -1063,10 +947,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/statPage.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="269" selection-start-line="269" selection-end-line="269" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#4966#6029#0#HTML" />
+            <element signature="e#6477#7575#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/urlList.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="44" column="39" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/publico/js/urlList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="55" column="17" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/UrlWebService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="21" column="39" lean-forward="true" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
+        <state relative-caret-position="357">
+          <caret line="21" column="26" lean-forward="true" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#902#903#0" expanded="true" />
@@ -1087,8 +1002,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/pucmm/dhamarmj/Handler/soapHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="272">
+          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
