@@ -1,6 +1,7 @@
 package edu.pucmm.dhamarmj.Handler;
 
 import com.google.gson.Gson;
+import edu.pucmm.dhamarmj.Encapsulation.Groupby;
 import edu.pucmm.dhamarmj.Encapsulation.Url;
 import edu.pucmm.dhamarmj.Encapsulation.User;
 import edu.pucmm.dhamarmj.Encapsulation.Visit;
@@ -26,13 +27,13 @@ public class mainHandler {
     public mainHandler() {
     }
 
-    User currentUser = new User();
+    static User currentUser = new User();
     Gson gson = new Gson();
-    String ip_val, hex_val, new_url, base_url = "http://localhost:4567/dmj/";
-    Url url_value;
+    static String ip_val, hex_val, new_url, base_url = "http://localhost:4567/dmj/";
+    static Url url_value;
     User aux;
     String so, browser, auxS;
-    int auxi;
+    int auxi, auxi2;
 
     public void startup() {
         staticFiles.location("/publico");
@@ -128,6 +129,8 @@ public class mainHandler {
             Map<String, Object> attributes = validateUser();
             Url url = UrlServices.getInstancia().buscar(Long.parseLong(request.params("id")));
             attributes.put("clickNum", url.getVisits().size());
+            attributes.put("urlId", request.params("id"));
+            attributes.put("url", url.getUrl());
             return new ModelAndView(attributes, "statPage.ftl");
         }, freeMarkerEngine);
 
@@ -184,22 +187,26 @@ public class mainHandler {
             response.header("Content-Type", "application/json");
             return groupbyBrowser(visits);
         }, JsonTransformer.json());
-        get("/rest/osUrl/:id", (request, response) -> {
-            List<Visit> visits = VisitServices.getInstancia().getVisitbyUrl(Long.parseLong(request.params("id")));
-            response.header("Content-Type", "application/json");
-            return groupbySo(visits);
-        }, JsonTransformer.json());
-        get("/rest/dateUrl/:id", (request, response) -> {
-            List<Visit> visits = VisitServices.getInstancia().getVisitbyUrl(Long.parseLong(request.params("id")));
-            response.header("Content-Type", "application/json");
-            return groupbyDate(visits);
-        }, JsonTransformer.json());
 
-       // HttpResponse<String> response = Unirest.get('https://api.microlink.io?url=https%3A%2F%2Ftwitter.com%2Ffuturism%2Fstatus%2F882987478541533189');
+//        get("/rest/osUrl/:id", (request, response) -> {
+//            List<Visit> visits = VisitServices.getInstancia().getVisitbyUrl(Long.parseLong(request.params("id")));
+//            response.header("Content-Type", "application/json");
+//            return groupbySo(visits);
+//        }, JsonTransformer.json());
+//        get("/rest/dateUrl/:id", (request, response) -> {
+//            List<Visit> visits = VisitServices.getInstancia().getVisitbyUrl(Long.parseLong(request.params("id")));
+//            response.header("Content-Type", "application/json");
+//            return groupbyDate(visits);
+//        }, JsonTransformer.json());
+
+        // HttpResponse<String> response = Unirest.get('https://api.microlink.io?url=https%3A%2F%2Ftwitter.com%2Ffuturism%2Fstatus%2F882987478541533189');
 
     }
 
-    private Url generateURL(String a) throws Exception {
+    public static Url generateURL(String a) throws Exception {
+        if(a.isEmpty())
+            return null;
+
         URL direction = new URL(a);
         direction.toURI();
         InetAddress ip = InetAddress.getByName(direction.getHost());
@@ -208,11 +215,10 @@ public class mainHandler {
         ip_val = (Long.parseLong(ip_val) + LocalDateTime.now().getMinute() + LocalDateTime.now().getSecond()) + "";
         hex_val = longToHex(ip_val);
         new_url = base_url + hex_val;
-        //System.out.println(currentUser.getId());
         return new Url(a, ip.getHostAddress(), new_url, currentUser);
     }
 
-    private String longToHex(String value) {
+    private static String longToHex(String value) {
         return Long.toHexString(Long.parseLong(value));
     }
 
@@ -309,7 +315,7 @@ public class mainHandler {
             browser = "IE";
         } else if (userAgent.contains("opr") || userAgent.contains("opera")) {
             browser = "Opera";
-        }  else if (userAgent.contains("chrome")) {
+        } else if (userAgent.contains("chrome")) {
             browser = "Chrome";
         } else if (userAgent.contains("firefox")) {
             browser = "Firefox";
@@ -321,49 +327,62 @@ public class mainHandler {
         return browser;
     }
 
-    private HashMap<String, Integer> groupbyBrowser(List<Visit> visits){
-        HashMap<String, Integer> chart_val = new HashMap<String, Integer>();
-        for (Visit visit:
-             visits) {
-            if(chart_val.get(visit.getBrowser()) != null){
-                auxi = chart_val.get(visit.getBrowser());
-                chart_val.remove(visit.getBrowser());
-                chart_val.put(visit.getBrowser(), auxi+1);
-            }
-            else {
-                chart_val.put(visit.getBrowser(), 1);
+    private List<Groupby> groupbyBrowser(List<Visit> visits) {
+        List<Groupby> chart_val = new ArrayList<>();
+        for (Visit visit :
+                visits) {
+            auxi = find(chart_val, visit.getBrowser());
+            if (auxi != -1) {
+                auxi2 = chart_val.get(auxi).getValue();
+                chart_val.get(auxi).setValue(auxi2 + 1);
+            } else {
+                chart_val.add(new Groupby(visit.getBrowser(), 1));
             }
         }
         return chart_val;
     }
 
-    private HashMap<String, Integer> groupbySo(List<Visit> visits){
-        HashMap<String, Integer> chart_val = new HashMap<String, Integer>();
-        for (Visit visit:
+    private List<Groupby> groupbySo(List<Visit> visits) {
+        List<Groupby> chart_val = new ArrayList<>();
+        for (Visit visit :
                 visits) {
-            if(chart_val.get(visit.getSo()) != null){
-                auxi = chart_val.get(visit.getSo());
-                chart_val.remove(visit.getSo());
-                chart_val.put(visit.getSo(), auxi+1);
+            auxi = find(chart_val, visit.getSo());
+            if (auxi != -1) {
+                auxi2 = chart_val.get(auxi).getValue();
+                chart_val.get(auxi).setValue(auxi2 + 1);
+            } else {
+                chart_val.add(new Groupby(visit.getSo(), 1));
             }
-            else
-                chart_val.put(visit.getSo(), 1);
         }
         return chart_val;
     }
-    private HashMap<String, Integer> groupbyDate(List<Visit> visits){
-        HashMap<String, Integer> chart_val = new HashMap<String, Integer>();
-        for (Visit visit:
+
+    private List<Groupby> groupbyDate(List<Visit> visits) {
+        List<Groupby> chart_val = new ArrayList<>();
+        for (Visit visit :
                 visits) {
-            if(chart_val.get(visit.getFechaS()) != null){
-                auxi = chart_val.get(visit.getFechaS());
-                chart_val.remove(visit.getFechaS());
-                chart_val.put(visit.getFechaS(), auxi+1);
+            auxi = find(chart_val, visit.getFechaS());
+            if (auxi != -1) {
+                auxi2 = chart_val.get(auxi).getValue();
+                chart_val.get(auxi).setValue(auxi2 + 1);
+            } else {
+                chart_val.add(new Groupby(visit.getFechaS(), 1));
             }
-            else
-                chart_val.put(visit.getFechaS(), 1);
         }
         return chart_val;
+    }
+
+    public int find(List<Groupby> array, String target) {
+        if (array.size() == 0)
+            return -1;
+
+        int i = 0, return_val = -1;
+        while (i < array.size() && return_val == -1) {
+            if (array.get(i).getName() == target)
+                return_val = i;
+            i++;
+        }
+        return return_val;
     }
 
 }
