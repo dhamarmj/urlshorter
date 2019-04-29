@@ -77,7 +77,7 @@ public class mainHandler {
 
         get("/LogIn/", (request, response) -> {
             Map<String, Object> attributes = validateUser();
-            return new ModelAndView(attributes, "signIn.ftl");
+            return new ModelAndView(attributes, "signin.ftl");
         }, freeMarkerEngine);
 
         post("/logInUser/", (request, response) -> {
