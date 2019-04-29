@@ -12,6 +12,7 @@ import spark.Request;
 import spark.Session;
 import spark.template.freemarker.FreeMarkerEngine;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -27,19 +28,18 @@ public class restHandler {
     Gson gson = new Gson();
     User currentuser;
     public final static String ACCEPT_TYPE_JSON = "application/json";
-    public final static String ACCEPT_TYPE_XML = "application/xml";
 
     public void startup() {
         path("/api", () -> {
             path("/url", () -> {
                 get("/", (request, response) -> {
                     List<Url> urls= UrlServices.getInstancia().buscarTodos();
+                    List<UrlSoap> return_val = new ArrayList<>();
                     for (Url item:
                          urls) {
-                        item.setVisits(null);
-                        item.setUser(null);
+                        return_val.add(new UrlSoap(item.getUrl(),item.getRedirect()));
                     }
-                    return urls;
+                    return return_val;
                 }, JsonTransformer.json());
 
                 get("/:id", (request, response) -> {

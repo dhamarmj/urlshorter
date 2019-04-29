@@ -4,6 +4,14 @@ public class UrlSoap {
     private String url;
     private String redirect;
 
+    public UrlSoap() {
+    }
+
+    public UrlSoap(String url, String redirect) {
+        this.url = url;
+        this.redirect = redirect;
+    }
+
     public String getUrl() {
         return url;
     }

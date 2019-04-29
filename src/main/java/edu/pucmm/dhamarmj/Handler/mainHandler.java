@@ -240,9 +240,7 @@ public class mainHandler {
             attributes.put("usuario", "other");
             attributes.put("userSigned", false);
             return attributes;
-        }
-        else
-        {
+        } else {
             if (currentUser.isAdmin()) {
                 attributes.put("usuario", "admin");
             } else {
@@ -275,7 +273,7 @@ public class mainHandler {
     }
 
     private void StartUser() {
-        if (UserServices.getInstancia().buscarTodos().size() == 0) {
+        if (UserServices.getInstancia().getUser("admin", encryptPassword("admin")) == null) {
             UserServices.getInstancia().insert(new User("admin",
                     "admin",
                     encryptPassword("admin"),
