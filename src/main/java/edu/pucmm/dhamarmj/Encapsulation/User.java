@@ -56,7 +56,7 @@ public class User implements Serializable {
         this.urls = urls;
     }
 
-    public void setUrls(Url url) {
+    public void setUrl(Url url) {
         if (this.urls == null)
             this.urls = new HashSet<>();
 

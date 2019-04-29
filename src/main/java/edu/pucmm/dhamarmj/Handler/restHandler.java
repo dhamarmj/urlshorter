@@ -15,6 +15,7 @@ import spark.template.freemarker.FreeMarkerEngine;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static spark.Spark.*;
 
@@ -42,12 +43,12 @@ public class restHandler {
                     return return_val;
                 }, JsonTransformer.json());
 
-                get("/:id", (request, response) -> {
-                    Url urls= UrlServices.getInstancia().buscar(Long.parseLong(request.params("id")));
-                    urls.setUser(null);
-                    urls.setVisits(null);
-                    return urls;
-                }, JsonTransformer.json());
+//                get("/:id", (request, response) -> {
+//                    Url urls= UrlServices.getInstancia().buscar(Long.parseLong(request.params("id")));
+//                    urls.setUser(null);
+//                    urls.setVisits(null);
+//                    return urls;
+//                }, JsonTransformer.json());
 
                 post("/", restHandler.ACCEPT_TYPE_JSON, (request, response) -> {
                     Url fu = gson.fromJson(request.body(), Url.class);
@@ -56,7 +57,6 @@ public class restHandler {
                         response.status(404);
                         return null;
                     } else {
-
                         UrlServices.getInstancia().insert(returned_val);
                         return returned_val;
                     }
@@ -73,24 +73,29 @@ public class restHandler {
                     }
                 }, JsonTransformer.json());
 
-                delete("/:id", restHandler.ACCEPT_TYPE_JSON, (request, response) -> {
-                    if(request.params("id") == null)
-                    {
-                        response.status(404);
-                        return null;
-                    }
-                    else
-                    {
-                        Url url = UrlServices.getInstancia().buscar(Long.parseLong(request.params("id")));
-                        UrlServices.getInstancia().eliminar(url);
-                        return url;
-                    }
-                }, JsonTransformer.json());
+//                delete("/:id", restHandler.ACCEPT_TYPE_JSON, (request, response) -> {
+//                    if(request.params("id") == null)
+//                    {
+//                        response.status(404);
+//                        return null;
+//                    }
+//                    else
+//                    {
+//                        Url url = UrlServices.getInstancia().buscar(Long.parseLong(request.params("id")));
+//                        UrlServices.getInstancia().eliminar(url);
+//                        return url;
+//                    }
+//                }, JsonTransformer.json());
             });
 
             path("/user", () -> {
                 get("/", (request, response) -> {
-                    return UserServices.getInstancia().buscarTodos();
+                    List<User> u = UserServices.getInstancia().buscarTodos();
+                    for (User us:
+                         u) {
+                        us.setUrls(null);
+                    }
+                    return u;
                 }, JsonTransformer.json());
 
                 post("/", restHandler.ACCEPT_TYPE_JSON, (request, response) -> {

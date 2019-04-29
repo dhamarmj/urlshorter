@@ -275,10 +275,11 @@ public class mainHandler {
 
     private void StartUser() {
         if (UserServices.getInstancia().getUser("admin", encryptPassword("admin")) == null) {
-            UserServices.getInstancia().insert(new User("admin",
+           User u= new User("admin",
                     "admin",
                     encryptPassword("admin"),
-                    true));
+                    true);
+            UserServices.getInstancia().insert(u);
             System.out.println("ADMIN CREATED");
         }
     }
