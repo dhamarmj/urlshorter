@@ -179,8 +179,8 @@ public class mainHandler {
 
         get("/deleteUrl/:id", (request, response) -> {
             Url url = UrlServices.getInstancia().buscar(Long.parseLong(request.params("id")));
-            for (Visit v:
-                 url.getVisits()) {
+            for (Visit v :
+                    url.getVisits()) {
                 VisitServices.getInstancia().eliminar(v.getId());
             }
             UrlServices.getInstancia().eliminar(url.getId());
@@ -216,7 +216,7 @@ public class mainHandler {
     }
 
     public static Url generateURL(String a) throws Exception {
-        if(a.isEmpty())
+        if (a.isEmpty())
             return null;
 
         URL direction = new URL(a);
@@ -236,20 +236,21 @@ public class mainHandler {
 
     private Map<String, Object> validateUser() {
         Map<String, Object> attributes = new HashMap<>();
-        if (currentUser.getPassword() == null) {
+        if (currentUser == null || currentUser.getPassword() == null) {
             attributes.put("usuario", "other");
-            attributes.put("userSigned", false);
             attributes.put("userSigned", false);
             return attributes;
         }
-
-        if (currentUser.isAdmin()) {
-            attributes.put("usuario", "admin");
-        } else {
-            attributes.put("usuario", "visitor");
+        else
+        {
+            if (currentUser.isAdmin()) {
+                attributes.put("usuario", "admin");
+            } else {
+                attributes.put("usuario", "visitor");
+            }
+            attributes.put("userSigned", true);
+            return attributes;
         }
-        attributes.put("userSigned", true);
-        return attributes;
     }
 
     public static String getHash(String txt, String hashType) {
