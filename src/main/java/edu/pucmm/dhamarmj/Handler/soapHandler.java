@@ -1,7 +1,6 @@
 package edu.pucmm.dhamarmj.Handler;
 
 import com.sun.net.httpserver.HttpContext;
-import edu.pucmm.dhamarmj.Encapsulation.UrlSoap;
 import org.eclipse.jetty.http.spi.HttpSpiContextHandler;
 import org.eclipse.jetty.http.spi.JettyHttpContext;
 import org.eclipse.jetty.http.spi.JettyHttpServer;
