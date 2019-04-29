@@ -278,6 +278,7 @@ public class mainHandler {
                     "admin",
                     encryptPassword("admin"),
                     true));
+            System.out.println("ADMIN CREATED");
         }
     }
 
