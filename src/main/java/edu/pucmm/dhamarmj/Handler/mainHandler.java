@@ -82,6 +82,7 @@ public class mainHandler {
 
         post("/logInUser/", (request, response) -> {
             User user = UserServices.getInstancia().getUser(request.queryParams("username"), encryptPassword(request.queryParams("password")));
+            System.out.println(request.queryParams("username") + ": " + encryptPassword(request.queryParams("password")));
             if (user != null) {
                 CreateSession(request, user);
                 boolean remember = Boolean.parseBoolean(request.queryParams("remember"));
